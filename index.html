@@ -1,1 +1,1087 @@
- 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Promise Chirove — Software Developer &amp; Computer Science Undergraduate</title>
+<meta name="description" content="Portfolio and CV of Promise Chirove, a Computer Science undergraduate at Bindura University of Science Education. Full-stack developer and ethical hacking certified, open to a 2027 attachment, on-demand contract work and cybersecurity research.">
+<meta name="theme-color" content="#0a0b09">
+<meta property="og:title" content="Promise Chirove — Software Developer">
+<meta property="og:description" content="Full-stack developer building biometric attendance, housing marketplaces and campus sports platforms. AI-augmented delivery, security-minded, open to attachment, contract and cybersecurity research roles.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b09;
+    --bg-2:#0e100c;
+    --panel:#12150f;
+    --panel-2:#171a13;
+    --ink:#f2f0e8;
+    --muted:#a7aa9d;
+    --faint:#8b9082;
+    --line:rgba(242,240,232,.13);
+    --line-strong:rgba(242,240,232,.28);
+    --acid:#d8ff4a;
+    --acid-soft:rgba(216,255,74,.12);
+    --orange:#ff6a3d;
+    --serif:"Instrument Serif", Georgia, "Times New Roman", serif;
+    --sans:"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:"JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    --maxw:1240px;
+    --pad:clamp(20px, 4vw, 56px);
+    --radius:2px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:96px}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); font-weight:400; font-size:16px; line-height:1.62;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(900px 560px at 82% -8%, rgba(216,255,74,.09), transparent 62%),
+      radial-gradient(760px 520px at -6% 22%, rgba(255,106,61,.055), transparent 60%),
+      linear-gradient(180deg, #0a0b09 0%, #0a0b09 60%, #0c0e0a 100%);
+  }
+  .grain{
+    position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  }
+  ::selection{background:var(--acid); color:#0a0b09}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  button{font:inherit; color:inherit}
+  h1,h2,h3,h4,p,figure,ul,ol{margin:0}
+  ul,ol{padding:0; list-style:none}
+  :focus-visible{outline:2px solid var(--acid); outline-offset:4px}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  .skip{position:fixed; left:16px; top:-80px; z-index:200; background:var(--acid); color:#0a0b09; padding:12px 18px; font-weight:700; transition:top .2s}
+  .skip:focus{top:16px}
+  .wrap{width:min(var(--maxw), 100% - (var(--pad) * 2)); margin-inline:auto}
+
+  /* ---------- scroll progress ---------- */
+  #progress{position:fixed; top:0; left:0; height:2px; width:0%; background:var(--acid); z-index:120; box-shadow:0 0 18px rgba(216,255,74,.5)}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    border-bottom:1px solid transparent; transition:background .3s, border-color .3s, backdrop-filter .3s;
+  }
+  .site-header.scrolled{background:rgba(10,11,9,.82); backdrop-filter:blur(16px); border-bottom-color:var(--line)}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; gap:24px; height:78px}
+  .brand{font-family:var(--mono); font-size:15px; font-weight:500; letter-spacing:.08em; display:flex; align-items:center; gap:10px}
+  .brand .mark{width:30px; height:30px; border:1px solid var(--line-strong); display:grid; place-items:center; color:var(--acid); font-size:11px}
+  .brand span{color:var(--acid)}
+  .nav-desktop{display:flex; align-items:center; gap:30px}
+  .nav-desktop a{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); padding:6px 0; position:relative; transition:color .2s}
+  .nav-desktop a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--acid); transition:width .25s}
+  .nav-desktop a:hover,.nav-desktop a.active{color:var(--ink)}
+  .nav-desktop a:hover::after,.nav-desktop a.active::after{width:100%}
+  .header-actions{display:flex; align-items:center; gap:10px}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding:12px 20px; border:1px solid var(--line-strong); border-radius:var(--radius);
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    transition:background .2s, color .2s, border-color .2s, transform .2s; white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-solid{background:var(--acid); color:#0a0b09; border-color:var(--acid); font-weight:500}
+  .btn-solid:hover{background:#e5ff7d; border-color:#e5ff7d}
+  .btn-ghost{color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--acid); color:var(--acid)}
+  .menu-btn{display:none; width:44px; height:44px; background:none; border:1px solid var(--line-strong); cursor:pointer; position:relative}
+  .menu-btn i{position:absolute; left:12px; right:12px; height:1px; background:var(--ink); transition:transform .25s, opacity .25s}
+  .menu-btn i:nth-child(1){top:16px}
+  .menu-btn i:nth-child(2){top:22px}
+  .menu-btn i:nth-child(3){top:28px}
+  .menu-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+  .menu-btn[aria-expanded="true"] i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .mobile-menu{
+    position:fixed; inset:0; z-index:90; background:#0a0b09;
+    display:flex; flex-direction:column; justify-content:center; padding:96px var(--pad) 40px;
+    transform:translateY(-102%); transition:transform .45s cubic-bezier(.7,0,.2,1), visibility 0s linear .45s;
+    visibility:hidden;
+  }
+  .mobile-menu.open{transform:none; visibility:visible; transition:transform .45s cubic-bezier(.7,0,.2,1), visibility 0s}
+  .mobile-menu a{font-family:var(--serif); font-size:clamp(2.1rem,9vw,3.4rem); line-height:1.18; padding:7px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline}
+  .mobile-menu a small{font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:var(--acid)}
+  .mobile-menu .mm-foot{margin-top:30px; font-family:var(--mono); font-size:11px; color:var(--muted); line-height:2}
+
+  /* ---------- shared ---------- */
+  .eyebrow{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--acid); box-shadow:0 0 0 4px rgba(216,255,74,.12); animation:pulse 2.6s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(216,255,74,.1)}50%{box-shadow:0 0 0 7px rgba(216,255,74,.03)}}
+  .section{padding:clamp(74px,9vw,124px) 0; border-top:1px solid var(--line); position:relative}
+  .section-head{display:grid; grid-template-columns:190px 1fr; gap:34px; align-items:start; margin-bottom:clamp(36px,5vw,64px)}
+  .section-label{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); display:flex; gap:12px; align-items:center; padding-top:12px}
+  .section-label b{color:var(--acid); font-weight:500}
+  .section-label::after{content:""; height:1px; flex:1; background:var(--line)}
+  .h2{font-family:var(--serif); font-weight:400; font-size:clamp(2.25rem,4.8vw,4.35rem); line-height:1.02; letter-spacing:-.022em; max-width:920px}
+  .h2 em{font-style:italic; color:var(--acid)}
+  .lede{color:var(--muted); font-size:clamp(1rem,1.25vw,1.14rem); line-height:1.75; max-width:64ch}
+  .reveal{transform:translateY(26px); transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(126px,15vh,168px) 0 clamp(54px,7vw,86px); position:relative}
+  .hero-grid{display:grid; grid-template-columns:1.12fr .78fr; gap:clamp(30px,5vw,76px); align-items:center}
+  .hero h1{
+    font-family:var(--serif); font-weight:400; font-size:clamp(3.45rem,7.6vw,7rem);
+    line-height:.93; letter-spacing:-.035em; margin:22px 0 26px;
+  }
+  .hero h1 em{font-style:italic; color:var(--acid); display:inline-block}
+  .hero .lede{max-width:58ch}
+  .hero .lede strong{color:var(--ink); font-weight:600}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px}
+  .hero-actions .btn{padding:15px 26px}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:34px; font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; color:var(--faint); text-transform:uppercase}
+  .hero-meta span{display:flex; align-items:center; gap:8px}
+  .hero-meta span::before{content:""; width:4px; height:4px; background:var(--acid); border-radius:50%}
+
+  .hero-visual{position:relative}
+  .portrait-frame{position:relative; aspect-ratio:4/4.85; border:1px solid var(--line-strong); overflow:hidden; background:var(--panel)}
+  .portrait-frame::before,.portrait-frame::after{content:""; position:absolute; z-index:2; width:24px; height:24px; border-color:var(--acid); border-style:solid; pointer-events:none}
+  .portrait-frame::before{top:10px; left:10px; border-width:1px 0 0 1px}
+  .portrait-frame::after{bottom:10px; right:10px; border-width:0 1px 1px 0}
+  .portrait-frame img{width:100%; height:100%; object-fit:cover; object-position:center 18%; filter:saturate(.86) contrast(1.03); transition:filter .5s, transform .8s cubic-bezier(.2,.7,.2,1)}
+  .hero-visual:hover .portrait-frame img{filter:saturate(1) contrast(1.02); transform:scale(1.015)}
+  .portrait-shade{position:absolute; inset:0; background:linear-gradient(180deg, transparent 52%, rgba(10,11,9,.82) 100%)}
+  .portrait-tag{
+    position:absolute; z-index:3; left:16px; right:16px; bottom:16px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+  }
+  .portrait-tag .name{font-family:var(--serif); font-size:clamp(1.3rem,2vw,1.7rem); line-height:1.05}
+  .portrait-tag .name small{display:block; font-family:var(--mono); font-size:9px; letter-spacing:.13em; color:var(--acid); margin-bottom:6px; text-transform:uppercase}
+  .portrait-tag .reg{font-family:var(--mono); font-size:9px; color:var(--muted); text-align:right; line-height:1.7; letter-spacing:.06em}
+  .hero-side{position:absolute; right:-28px; top:50%; transform:translateY(-50%) rotate(90deg); transform-origin:center; font-family:var(--mono); font-size:9px; letter-spacing:.28em; color:var(--faint); text-transform:uppercase; white-space:nowrap}
+  .hero-stamp{
+    position:absolute; z-index:4; left:-18px; top:22px; background:var(--acid); color:#0a0b09;
+    padding:11px 15px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; font-weight:500; text-transform:uppercase;
+    transform:rotate(-3deg); box-shadow:0 12px 30px rgba(0,0,0,.35);
+  }
+  .hero-stamp strong{display:block; font-size:12px; margin-bottom:2px}
+
+  /* ---------- marquee ---------- */
+  .marquee{border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; padding:15px 0; background:rgba(255,255,255,.012); -webkit-mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent)}
+  .marquee-track{display:flex; width:max-content; animation:scroll 38s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); padding:0 20px; display:flex; align-items:center; gap:20px; white-space:nowrap}
+  .marquee-track span::after{content:"✦"; color:var(--acid); font-size:10px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- stats ---------- */
+  .stats{border-bottom:1px solid var(--line)}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr)}
+  .stat{padding:30px clamp(14px,2.4vw,34px); border-left:1px solid var(--line)}
+  .stat:first-child{border-left:0; padding-left:0}
+  .stat .num{font-family:var(--serif); font-size:clamp(2.3rem,4vw,3.5rem); line-height:1; letter-spacing:-.02em}
+  .stat .num sup{font-size:.45em; color:var(--acid); vertical-align:super; margin-left:2px}
+  .stat .label{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-top:9px; line-height:1.6; max-width:20ch}
+
+  /* ---------- profile ---------- */
+  .profile-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(34px,5vw,80px); align-items:start}
+  .profile-grid > *{min-width:0}
+  .profile-copy p{color:var(--muted); font-size:clamp(1rem,1.18vw,1.09rem); line-height:1.8; margin-bottom:18px; max-width:60ch}
+  .profile-copy p strong{color:var(--ink); font-weight:600}
+  .profile-copy .pull{
+    font-family:var(--serif); font-size:clamp(1.55rem,2.7vw,2.25rem); line-height:1.24; color:var(--ink);
+    border-left:2px solid var(--acid); padding-left:22px; margin:28px 0 6px; letter-spacing:-.01em;
+  }
+  .facts{border:1px solid var(--line); background:linear-gradient(160deg, rgba(255,255,255,.025), transparent 60%)}
+  .fact{display:grid; grid-template-columns:104px minmax(0,1fr); gap:12px; padding:15px 16px; border-bottom:1px solid var(--line); font-size:13px}
+  .fact:last-child{border-bottom:0}
+  .fact dt{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); padding-top:2px}
+  .fact dd{margin:0; color:var(--ink); line-height:1.55; min-width:0; overflow-wrap:anywhere}
+  .fact dd a{border-bottom:1px solid var(--line-strong); transition:color .2s, border-color .2s}
+  .fact dd a:hover{color:var(--acid); border-color:var(--acid)}
+  .value-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:clamp(38px,5vw,64px)}
+  .value{background:var(--bg); padding:26px 24px 28px; transition:background .25s}
+  .value:hover{background:var(--panel)}
+  .value .vnum{font-family:var(--mono); font-size:9.5px; color:var(--acid); letter-spacing:.1em}
+  .value h3{font-size:15px; font-weight:600; margin:13px 0 8px; letter-spacing:-.01em}
+  .value p{font-size:12.5px; color:var(--muted); line-height:1.7}
+
+  /* ---------- work ---------- */
+  .work-head{display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-bottom:16px}
+  .work-note{font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--faint); text-transform:uppercase; padding-bottom:8px}
+  .project{border-top:1px solid var(--line-strong); padding:clamp(30px,4vw,50px) 0}
+  .project:last-of-type{border-bottom:1px solid var(--line-strong)}
+  .project-top{display:grid; grid-template-columns:64px 1fr auto; gap:20px; align-items:start}
+  .project-index{font-family:var(--mono); font-size:11px; color:var(--acid); letter-spacing:.1em; padding-top:10px}
+  .project-kicker{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); margin-bottom:9px}
+  .project h3{font-family:var(--serif); font-weight:400; font-size:clamp(1.75rem,3.4vw,2.85rem); line-height:1.06; letter-spacing:-.018em; max-width:20ch}
+  .project h3 span{color:var(--muted)}
+  .project-tagline{color:var(--muted); font-size:14px; margin-top:11px; max-width:52ch}
+  .project-link{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--line-strong); padding-bottom:5px; transition:color .2s, border-color .2s; white-space:nowrap}
+  .project-link:hover{color:var(--acid); border-color:var(--acid)}
+  .project-grid{display:grid; grid-template-columns:64px 1fr 280px; gap:20px; margin-top:26px}
+  .project-main{grid-column:2}
+  .project-body p{color:var(--muted); font-size:14px; line-height:1.78; max-width:66ch}
+  .checks{margin:20px 0 0; display:grid; gap:10px; max-width:70ch}
+  .checks li{position:relative; padding-left:24px; font-size:13.5px; color:#d5d6cc; line-height:1.62}
+  .checks li::before{content:"↳"; position:absolute; left:0; top:0; color:var(--acid); font-family:var(--mono); font-size:12px}
+  .checks li strong{color:var(--ink); font-weight:600}
+  .stack{display:flex; flex-wrap:wrap; gap:6px; margin-top:22px}
+  .chip{font-family:var(--mono); font-size:9.5px; letter-spacing:.03em; color:#c9cbbf; border:1px solid var(--line); padding:5px 9px; border-radius:1px; line-height:1.3; transition:border-color .2s, color .2s}
+  .chip:hover{border-color:var(--acid); color:var(--acid)}
+  .project-facts{border-left:1px solid var(--line); padding-left:24px}
+  .pf{display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid rgba(242,240,232,.07); font-size:11.5px}
+  .pf:last-child{border-bottom:0}
+  .pf span{font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); padding-top:1px}
+  .pf strong{font-weight:500; text-align:right; color:#dadcd1; max-width:17ch}
+  .project-metrics{display:flex; gap:24px; flex-wrap:wrap; margin-top:24px; padding-top:18px; border-top:1px solid var(--line)}
+  .pm{display:flex; flex-direction:column; gap:2px}
+  .pm b{font-family:var(--serif); font-size:1.6rem; font-weight:400; line-height:1}
+  .pm small{font-family:var(--mono); font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint)}
+  details.tech{margin-top:22px}
+  details.tech summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); padding:8px 12px; transition:border-color .2s, color .2s}
+  details.tech summary::-webkit-details-marker{display:none}
+  details.tech summary::before{content:"+"; color:var(--acid); font-size:13px; line-height:1}
+  details.tech[open] summary::before{content:"–"}
+  details.tech summary:hover{border-color:var(--acid); color:var(--acid)}
+  .tech-body{margin-top:14px; background:var(--panel); border:1px solid var(--line); padding:18px 20px; display:grid; grid-template-columns:1fr 1fr; gap:18px 26px}
+  .tech-body h4{font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--acid); margin-bottom:5px}
+  .tech-body p{font-size:12px; color:var(--muted); line-height:1.7}
+
+  /* ---------- skills ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line)}
+  .skill-group{background:var(--bg); padding:24px 22px 26px; transition:background .25s}
+  .skill-group:hover{background:var(--panel)}
+  .skill-group .sg-top{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:12px}
+  .skill-group h3{font-size:13.5px; font-weight:600; letter-spacing:-.005em}
+  .skill-group .sg-num{font-family:var(--mono); font-size:8.5px; color:var(--faint); letter-spacing:.08em}
+  .skill-group .sg-note{font-size:11.5px; color:var(--faint); line-height:1.6; margin-bottom:14px; min-height:2.9em}
+  .skill-group .stack{margin-top:0}
+  .skill-group .chip{font-size:9px; padding:4px 7px}
+  .beyond{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:34px}
+  .beyond-card{border:1px solid var(--line); padding:24px; background:linear-gradient(150deg, rgba(216,255,74,.045), transparent 55%)}
+  .beyond-card h3{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--acid); margin-bottom:10px}
+  .beyond-card p{font-size:13px; color:var(--muted); line-height:1.8}
+  .beyond-card p strong{color:var(--ink); font-weight:500}
+
+  /* ---------- timeline ---------- */
+  .timeline-layout{display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,90px); align-items:start}
+  .col-title{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:26px; display:flex; align-items:center; gap:12px}
+  .col-title::after{content:""; height:1px; flex:1; background:var(--line)}
+  .timeline{border-left:1px solid var(--line-strong); margin-left:5px}
+  .entry{position:relative; padding:0 0 30px 26px}
+  .entry:last-child{padding-bottom:0}
+  .entry::before{content:""; position:absolute; left:-4px; top:7px; width:7px; height:7px; background:var(--bg); border:1px solid var(--acid); border-radius:50%}
+  .entry .when{font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--acid); margin-bottom:5px}
+  .entry h3{font-size:15px; font-weight:600; line-height:1.4; letter-spacing:-.01em}
+  .entry .org{font-size:12px; color:var(--faint); margin-top:2px; font-style:italic}
+  .entry p{font-size:12.5px; color:var(--muted); line-height:1.74; margin-top:10px}
+  .entry p strong{color:#dfe0d6; font-weight:500}
+  .edu-card{border:1px solid var(--line); background:var(--panel); padding:28px; margin-bottom:22px}
+  .edu-card .when{font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--acid); margin-bottom:10px}
+  .edu-card h3{font-family:var(--serif); font-size:1.55rem; font-weight:400; line-height:1.12}
+  .edu-card .uni{font-size:12.5px; color:var(--muted); margin-top:6px}
+  .edu-card .edu-meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px}
+  .edu-card .edu-meta span{font-family:var(--mono); font-size:8.5px; letter-spacing:.05em; color:var(--muted); border:1px solid var(--line); padding:4px 8px}
+  .modules{display:flex; flex-wrap:wrap; gap:5px; margin-top:16px}
+  .modules span{font-size:10px; color:var(--faint); border:1px solid rgba(242,240,232,.08); padding:4px 7px; line-height:1.3}
+  .modules span.key{color:#cfd1c5; border-color:var(--line)}
+  .cert-card{border:1px solid var(--line); padding:24px; display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center}
+  .cert-card h3{font-size:14px; font-weight:600; line-height:1.4}
+  .cert-card .meta{font-size:11.5px; color:var(--faint); margin-top:4px; line-height:1.7}
+  .cert-card .badge{width:54px; height:54px; border:1px solid var(--acid); display:grid; place-items:center; font-family:var(--mono); font-size:9px; color:var(--acid); text-align:center; line-height:1.3; letter-spacing:.04em}
+  .cert-card a{display:inline-block; margin-top:8px; font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--acid); border-bottom:1px solid rgba(216,255,74,.4); padding-bottom:2px}
+
+  /* ---------- documents ---------- */
+  .docs-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+  .doc{border:1px solid var(--line); background:var(--panel); display:flex; flex-direction:column; overflow:hidden; transition:transform .3s, border-color .3s; text-align:left}
+  .doc:hover{transform:translateY(-4px); border-color:rgba(216,255,74,.5)}
+  .doc-media{aspect-ratio:4/3; overflow:hidden; background:#0d0f0b; position:relative; border-bottom:1px solid var(--line)}
+  .doc-media img{width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .6s, filter .4s; filter:saturate(.82) brightness(.86)}
+  .doc:hover .doc-media img{transform:scale(1.03); filter:saturate(1) brightness(1)}
+  .doc-media.pdf{display:flex; align-items:center; justify-content:center; background:
+      linear-gradient(135deg, rgba(216,255,74,.07), transparent 50%), repeating-linear-gradient(0deg, transparent 0 23px, rgba(242,240,232,.035) 23px 24px);}
+  .pdf-mark{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--acid); border:1px solid rgba(216,255,74,.35); padding:8px 12px; background:rgba(10,11,9,.5)}
+  .doc-body{padding:15px 16px 17px; display:flex; flex-direction:column; flex:1}
+  .doc-body .dtype{font-family:var(--mono); font-size:8.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:6px}
+  .doc-body h3{font-size:12.5px; font-weight:600; line-height:1.4}
+  .doc-body p{font-size:11px; color:var(--faint); line-height:1.6; margin-top:6px; flex:1}
+  .doc-body .open{font-family:var(--mono); font-size:9px; letter-spacing:.09em; text-transform:uppercase; color:var(--acid); margin-top:12px; display:flex; justify-content:space-between; align-items:center}
+  .doc-note{font-size:11.5px; color:var(--faint); margin-top:18px; line-height:1.7}
+  .doc-note strong{color:var(--muted); font-weight:500}
+
+  /* ---------- contact ---------- */
+  .contact{padding-bottom:clamp(60px,7vw,90px)}
+  .contact-top{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(34px,5vw,80px); align-items:start}
+  .contact h2{font-family:var(--serif); font-weight:400; font-size:clamp(3rem,8.4vw,7.2rem); line-height:.92; letter-spacing:-.03em; margin:20px 0 0}
+  .contact h2 em{font-style:italic; color:var(--acid)}
+  .contact-sub{color:var(--muted); font-size:14px; line-height:1.8; max-width:44ch; margin-top:26px}
+  .contact-list{border-top:1px solid var(--line-strong)}
+  .contact-row{display:flex; justify-content:space-between; align-items:center; gap:18px; padding:17px 0; border-bottom:1px solid var(--line); transition:padding .25s, color .2s}
+  .contact-row:hover{padding-left:6px}
+  .contact-row .cr-label{font-family:var(--mono); font-size:9px; letter-spacing:.11em; text-transform:uppercase; color:var(--faint); margin-bottom:3px}
+  .contact-row .cr-value{font-size:14px; color:var(--ink); word-break:break-word}
+  .contact-row .cr-arrow{font-family:var(--mono); color:var(--acid); font-size:14px; transition:transform .2s; flex:none}
+  .contact-row:hover .cr-arrow{transform:translate(2px,-2px)}
+  .copy-btn{background:none; border:1px solid var(--line); padding:6px 10px; font-family:var(--mono); font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); cursor:pointer; flex:none; transition:border-color .2s, color .2s}
+  .copy-btn:hover{border-color:var(--acid); color:var(--acid)}
+  .availability{margin-top:24px; border:1px solid rgba(216,255,74,.3); background:var(--acid-soft); padding:16px 18px; display:flex; gap:12px; align-items:flex-start}
+  .availability .dot{margin-top:6px; flex:none}
+  .availability p{font-size:11.5px; color:#d9dbcf; line-height:1.7}
+  .availability strong{color:var(--acid); font-weight:500}
+  .contact-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:30px}
+  .contact-actions .btn{padding:14px 24px}
+  .btn-acid{background:var(--acid); color:#0a0b09; border-color:var(--acid); font-weight:500}
+  .btn-acid:hover{background:#e5ff7d; border-color:#e5ff7d}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line); padding:26px 0 30px}
+  .footer-inner{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
+  .footer-inner p{font-family:var(--mono); font-size:9px; letter-spacing:.08em; color:var(--faint); text-transform:uppercase; line-height:1.9}
+  .footer-inner .up{font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:8px}
+  .footer-inner .up:hover{color:var(--acid)}
+
+  /* ---------- lightbox ---------- */
+  .lightbox{position:fixed; inset:0; z-index:200; background:rgba(5,6,4,.94); display:none; align-items:center; justify-content:center; padding:30px}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:min(92vw,900px); max-height:84vh; object-fit:contain; border:1px solid var(--line-strong)}
+  .lb-close{position:absolute; top:18px; right:18px; width:44px; height:44px; border:1px solid var(--line-strong); background:var(--bg); color:var(--ink); font-size:18px; cursor:pointer}
+  .lb-close:hover{border-color:var(--acid); color:var(--acid)}
+  .lb-caption{position:absolute; bottom:18px; left:0; right:0; text-align:center; font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:0 20px}
+
+  @media (max-width:1080px){
+    .nav-desktop{display:none}
+    .header-actions .btn-ghost{display:none}
+    .menu-btn{display:block}
+    .skills-grid{grid-template-columns:repeat(2,1fr)}
+    .docs-grid{grid-template-columns:repeat(2,1fr)}
+    .hero-grid{grid-template-columns:1fr .8fr; gap:36px}
+    .value-grid{grid-template-columns:repeat(2,1fr)}
+    .project-grid{grid-template-columns:44px 1fr}
+    .project-facts{grid-column:2; border-left:0; border-top:1px solid var(--line); padding:16px 0 0; display:flex; flex-wrap:wrap; gap:0 30px}
+    .pf{border-bottom:0; padding:5px 0; gap:8px}
+    .project-top{grid-template-columns:44px 1fr; gap:16px}
+    .project-link{grid-column:2; justify-self:start; margin-top:6px}
+    .project-index{padding-top:6px}
+  }
+  @media (max-width:860px){
+    .header-actions .btn{padding:10px 14px; font-size:10px}
+    .hero-grid{grid-template-columns:1fr; gap:44px}
+    .hero-visual{max-width:440px; width:100%}
+    .hero-side{display:none}
+    .section-head{grid-template-columns:1fr; gap:16px}
+    .section-label{padding-top:0}
+    .profile-grid,.timeline-layout,.contact-top{grid-template-columns:1fr}
+    .beyond{grid-template-columns:1fr}
+    .tech-body{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-left:0; padding-left:0}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .stat{padding:24px 18px}
+    .stat:nth-child(odd){padding-left:0}
+  }
+  @media (max-width:620px){
+    .header-inner{height:68px}
+    .header-actions .btn-ghost{display:none}
+    .hero{padding-top:112px}
+    .hero h1{font-size:clamp(3.1rem,15vw,4.4rem)}
+    .hero .lede{font-size:15px}
+    .hero-meta{gap:8px 16px; font-size:9px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .value-grid{grid-template-columns:1fr}
+    .skills-grid,.docs-grid{grid-template-columns:1fr}
+    .project-facts{display:block}
+    .pf{padding:7px 0; border-bottom:1px solid rgba(242,240,232,.07)}
+    .project-metrics{gap:18px}
+    .project h3{font-size:1.9rem; max-width:none}
+    .footer-inner{flex-direction:column; align-items:flex-start}
+    .hero-stamp{left:-6px; top:14px}
+  }
+  @media (max-width:380px){
+    .header-actions .btn-solid{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important}
+    .reveal{opacity:1; transform:none}
+  }
+  @media print{
+    body{background:#fff; color:#111}
+    body::before,.grain,#progress,.site-header,.mobile-menu,.marquee,.hero-visual,.hero-actions,.hero-meta,.contact-actions,.footer-inner .up,.lightbox,.project-link,details.tech{display:none !important}
+    .hero{padding:0 0 20px}
+    .hero-grid{grid-template-columns:1fr}
+    .section{padding:24px 0; border-color:#ddd}
+    .h2,.hero h1{color:#111}
+    .h2 em,.hero h1 em{color:#111}
+    .lede,.profile-copy p,.project-body p,.checks li,.entry p,.doc-body p{color:#333}
+    .stats,.value-grid,.skills-grid,.project,.project-facts{border-color:#ddd}
+    .skill-group,.value,.doc,.edu-card,.fact,.beyond-card{background:#fff; border-color:#ddd}
+    .chip,.modules span,.pf strong,.fact dd,.entry h3,.project h3,.value h3,.doc-body h3{color:#111}
+    a{color:#111}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand">
+      <span class="mark">PC</span> PROMISE<span>.</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#profile">Profile</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#documents">Documents</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost" href="cv.html">Print CV</a>
+      <a class="btn btn-solid" href="assets/Promise_Chirove_CV_2027.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+  <nav aria-label="Mobile">
+    <a href="#profile">Profile <small>01</small></a>
+    <a href="#work">Selected work <small>02</small></a>
+    <a href="#skills">Skills <small>03</small></a>
+    <a href="#experience">Experience <small>04</small></a>
+    <a href="#documents">Documents <small>05</small></a>
+    <a href="#contact">Contact <small>06</small></a>
+  </nav>
+  <div class="mm-foot">
+    p.chirove99@gmail.com<br>
+    0788 393 100 · 0788 249 959
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Open to attachment, contract &amp; cybersecurity research · 2027</p>
+        <h1 class="reveal d1">Software built for <em>the real world.</em></h1>
+        <p class="lede reveal d2">I'm <strong>Promise Chirove</strong>, a Computer Science undergraduate at Bindura University of Science Education. I build full-stack systems — a face-recognition attendance kiosk for a hospital, a payments-backed housing marketplace, and a campus sports platform — and I care about the parts users never see: data integrity, security and tests. I work AI-augmented: the right tool for each job, with every output verified by review and tests.</p>
+        <div class="hero-actions reveal d3">
+          <a class="btn btn-acid" href="#work">See selected work <span aria-hidden="true">↘</span></a>
+          <a class="btn btn-ghost" href="assets/Promise_Chirove_CV_2027.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
+        </div>
+        <ul class="hero-meta reveal d3">
+          <li><span>BSc (Hons) Computer Science · Level 2.2</span></li>
+          <li><span>Attachment · on-demand · contract</span></li>
+          <li><span>Cybersecurity research</span></li>
+        </ul>
+      </div>
+      <figure class="hero-visual reveal d2">
+        <div class="portrait-frame">
+          <img src="assets/promise-chirove-portrait.jpg" alt="Promise Chirove, wearing a checked blazer and tie, standing outside" width="900" height="1600" fetchpriority="high">
+          <div class="portrait-shade" aria-hidden="true"></div>
+          <div class="portrait-tag">
+            <div class="name"><small>Computer Science Undergraduate</small>Promise Chirove</div>
+            <div class="reg">BSC (HONS) CS<br>LEVEL 2.2 · 2026</div>
+          </div>
+        </div>
+        <div class="hero-stamp"><strong>Open to work</strong>Attachment · contract · research</div>
+        <figcaption class="sr-only">Portrait of Promise Chirove</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Prisma</span><span>MySQL</span><span>MariaDB</span><span>Tailwind CSS</span><span>face-api.js</span><span>Paynow</span><span>Docker</span><span>GitHub Actions</span><span>Jest</span><span>Playwright</span><span>Postman</span>
+      <span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Prisma</span><span>MySQL</span><span>MariaDB</span><span>Tailwind CSS</span><span>face-api.js</span><span>Paynow</span><span>Docker</span><span>GitHub Actions</span><span>Jest</span><span>Playwright</span><span>Postman</span>
+    </div>
+  </div>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats" aria-label="Key numbers">
+    <div class="wrap stats-grid">
+      <div class="stat reveal"><div class="num">03</div><div class="label">Full-stack systems built end to end</div></div>
+      <div class="stat reveal d1"><div class="num">334</div><div class="label">Automated tests in the biometric platform</div></div>
+      <div class="stat reveal d2"><div class="num">12<sup>mo</sup></div><div class="label">Attachment window, Jan–Dec 2027 · also open to contract work</div></div>
+      <div class="stat reveal d3"><div class="num">15<sup>h</sup></div><div class="label">Ethical hacking certified · open to security research</div></div>
+    </div>
+  </section>
+
+  <!-- ================= PROFILE ================= -->
+  <section class="section" id="profile">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label"><b>01</b> Profile</div>
+        <h2 class="h2 reveal">I like the unglamorous part: making the system <em>actually hold.</em></h2>
+      </div>
+      <div class="profile-grid">
+        <div class="profile-copy reveal">
+          <p>Most of my work starts with a process that is still on paper, in a spreadsheet, or in someone's head. I sit with the people who use it, write down what has to be true, then build the smallest complete system that makes it true — and test the edges.</p>
+          <p>At <strong>Vitality Hospital</strong>, that meant a browser kiosk that identifies staff by face, proves the person is live, calculates overnight shifts correctly and hands HR a payroll-ready record. At <strong>Dzimba Bindura</strong>, it meant holding a first month's rent in escrow while listings, bookings, messages, voice calls and concert tickets move through one platform. On the <strong>BUSE Campus Sports Hub</strong>, it meant turning campus fixtures and stats into a web and mobile product with a two-person team.</p>
+          <p>I work <strong>AI-augmented</strong>. I use the right assistant or tool for the job — research, scaffolding, debugging, test generation, documentation — then verify the output with review, automated tests and security checks. The aim is a shorter path to a working system, not a shortcut around engineering discipline.</p>
+          <p>I'm looking for a 2027 industrial attachment — or a paid on-demand engagement — where I can contribute to a real product or security team: writing production code, learning from senior engineers, and owning a problem from requirement to release.</p>
+          <blockquote class="pull">“Build it so the person at the door, the clerk at month end and the engineer at 2 a.m. can all trust it.”</blockquote>
+        </div>
+        <div class="facts reveal d1">
+          <dl>
+            <div class="fact"><dt>Name</dt><dd>Promise Chirove</dd></div>
+            <div class="fact"><dt>Degree</dt><dd>BSc (Hons) Computer Science</dd></div>
+            <div class="fact"><dt>University</dt><dd>Bindura University of Science Education</dd></div>
+            <div class="fact"><dt>Level</dt><dd>2.2 (2026) · expected completion end of 2028</dd></div>
+            <div class="fact"><dt>Registration</dt><dd>B250549A</dd></div>
+            <div class="fact"><dt>Availability</dt><dd>Attachment Jan–Dec 2027 · on-demand / contract</dd></div>
+            <div class="fact"><dt>Open to</dt><dd>Software development · cybersecurity research · on-demand</dd></div>
+            <div class="fact"><dt>Email</dt><dd><a href="mailto:p.chirove99@gmail.com">p.chirove99@gmail.com</a></dd></div>
+            <div class="fact"><dt>Phone</dt><dd><a href="tel:+263788393100">0788 393 100</a> · <a href="tel:+263788249959">0788 249 959</a></dd></div>
+            <div class="fact"><dt>Languages</dt><dd>English · Shona</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="value-grid">
+        <div class="value reveal"><div class="vnum">/ 01</div><h3>Full-stack delivery</h3><p>React and Next.js interfaces, Node and Express APIs, relational schemas, migrations and seed data — one person able to carry a feature end to end.</p></div>
+        <div class="value reveal d1"><div class="vnum">/ 02</div><h3>Security by default</h3><p>JWT and session handling, role-based access, login lockouts, rate limiting, audit trails, hashed tokens and signed single-use challenges.</p></div>
+        <div class="value reveal d2"><div class="vnum">/ 03</div><h3>Product thinking</h3><p>Stakeholder interviews, requirements, SRS and UML, database design, proposals, presentations and plain-language documentation.</p></div>
+        <div class="value reveal d3"><div class="vnum">/ 04</div><h3>Proof, not promises</h3><p>334 automated tests, Playwright smoke tests, CI pipelines, health checks and deployment scripts. AI output is reviewed and tested, never shipped on trust.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label"><b>02</b> Selected work</div>
+        <h2 class="h2 reveal">Three systems. Three different kinds of <em>hard.</em></h2>
+      </div>
+      <div class="work-head">
+        <p class="lede reveal" style="max-width:52ch">Each project below is a complete build: requirements, interface, data model, security and delivery. Open the technical note for the details behind the headline.</p>
+        <p class="work-note reveal d1">2026 · Selected</p>
+      </div>
+
+      <!-- Project 1 -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-index">01</div>
+          <div>
+            <p class="project-kicker">Independent developer · 2026 · Vitality Hospital</p>
+            <h3>Biometric attendance that <span>pays for itself.</span></h3>
+            <p class="project-tagline">One tap at the door. A payroll-ready record by month end.</p>
+          </div>
+          <a class="project-link" href="assets/Vitality-Biometric-Attendance-Proposal.pdf" target="_blank" rel="noopener">Proposal ↗</a>
+        </div>
+        <div class="project-grid">
+          <div class="project-main">
+            <div class="project-body">
+              <p>A hospital attendance system built around a browser kiosk and a manager dashboard. Staff tap once, look at the camera, and the server identifies them against every enrolled face — no typed ID, no shared PIN, no paper register. The system then decides clock-in or clock-out, applies the right shift window and produces the record HR needs.</p>
+              <ul class="checks">
+                <li><strong>Server-side 1:N face matching</strong> using 128-value descriptors; the kiosk never sends an employee ID, so a compromised tablet cannot name a person.</li>
+                <li><strong>Signed, single-use liveness challenge</strong> — a random head turn or smile defeats printed photos and still phone screens; the method is stored on every attendance row.</li>
+                <li><strong>Overnight-aware attendance engine</strong> — shift categories and per-employee overrides, time-zone-correct calculations in Africa/Harare, grace periods, early departure and an auto-logout cron for forgotten clock-outs.</li>
+                <li><strong>Payroll and reporting</strong> — daily, weekly, monthly and custom ranges; per-employee summaries; CSV exports and a payroll API; every export recorded in history.</li>
+              </ul>
+              <div class="stack" aria-label="Technologies used">
+                <span class="chip">React 18</span><span class="chip">Vite</span><span class="chip">Tailwind CSS</span><span class="chip">face-api.js</span><span class="chip">Node.js 20</span><span class="chip">Express MVC</span><span class="chip">Sequelize</span><span class="chip">MariaDB / MySQL</span><span class="chip">JWT</span><span class="chip">bcrypt</span><span class="chip">node-cron</span><span class="chip">Jest</span><span class="chip">Supertest</span><span class="chip">Vitest</span><span class="chip">Playwright</span><span class="chip">Docker</span><span class="chip">nginx</span><span class="chip">GitHub Actions</span>
+              </div>
+              <details class="tech">
+                <summary>Technical note</summary>
+                <div class="tech-body">
+                  <div><h4>Identity &amp; liveness</h4><p>Face enrolment stores multiple descriptors per employee. The punch endpoint performs 1:N matching, applies a configurable threshold, checks a signed liveness challenge and records both the match and the liveness method. Denied punches are audited.</p></div>
+                  <div><h4>Attendance maths</h4><p>Shift windows are anchored to the clock-in day so a 22:00–06:00 shift closes the next morning, not at midnight. Working days, unpaid rest days and time-zone boundaries are handled explicitly.</p></div>
+                  <div><h4>Security</h4><p>JWT sessions with 8-hour expiry, bcrypt work factor 12, HR_ADMIN and SYS_ADMIN roles, account lockout after five failures, rate-limited auth endpoints, Helmet headers, TLS 1.2+ and a provisioned device secret per kiosk.</p></div>
+                  <div><h4>Delivery</h4><p>Docker Compose stack (MySQL, API, nginx), health checks, migrations and seeding scripts, 252 backend and 82 frontend tests, Playwright browser tests, secret scanning and a deployment pipeline gated on tests.</p></div>
+                </div>
+              </details>
+            </div>
+            <div class="project-metrics">
+              <div class="pm"><b>252</b><small>backend tests</small></div>
+              <div class="pm"><b>82</b><small>frontend tests</small></div>
+              <div class="pm"><b>&lt;10s</b><small>target punch time</small></div>
+              <div class="pm"><b>2</b><small>admin roles</small></div>
+            </div>
+          </div>
+          <aside class="project-facts" aria-label="Project facts">
+            <div class="pf"><span>Role</span><strong>Independent developer</strong></div>
+            <div class="pf"><span>Surfaces</span><strong>Kiosk + HR dashboard</strong></div>
+            <div class="pf"><span>Domain</span><strong>HR, payroll, biometrics</strong></div>
+            <div class="pf"><span>Deployment</span><strong>Docker + nginx + TLS</strong></div>
+            <div class="pf"><span>Docs</span><strong>SRS, UML, DB design, security, test report</strong></div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-index">02</div>
+          <div>
+            <p class="project-kicker">Full-stack developer · 2026 · Dzimba Bindura</p>
+            <h3>A marketplace where rooms, bookings and <span>money agree.</span></h3>
+            <p class="project-tagline">Housing, short stays and event tickets for Bindura — with payments and escrow built in.</p>
+          </div>
+          <a class="project-link" href="#documents">Project notes ↓</a>
+        </div>
+        <div class="project-grid">
+          <div class="project-main">
+            <div class="project-body">
+              <p>A multi-role property and events platform: seekers find rentals, short stays and concert tickets; owners manage listings, rooms and bookings; admins verify identities, moderate content, release escrow payouts and check tickets at the gate. The hard part is not the listing page — it is keeping the money, the booking state and the audit trail consistent.</p>
+              <ul class="checks">
+                <li><strong>Payments that survive the real world</strong> — Paynow integration across EcoCash, OneMoney, card and bank, with webhook verification, a payment event log, retry-safe status polling and a payment state machine.</li>
+                <li><strong>First month's rent in escrow</strong> — held on the platform, released only after move-in confirmation, with a payout workflow and a permanent record of who was paid, when and by whom.</li>
+                <li><strong>Identity and trust</strong> — ID and selfie verification with face-match scoring, admin review queues, moderation notices, bans, listing takedowns and a tamper-evident audit log.</li>
+                <li><strong>Beyond the listing</strong> — in-app messaging, Agora voice calls, QR-coded PDF tickets with gate check-in, OTP second-factor sign-in, password resets and account data export.</li>
+              </ul>
+              <div class="stack" aria-label="Technologies used">
+                <span class="chip">Next.js 16</span><span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Tailwind CSS 4</span><span class="chip">Prisma 6</span><span class="chip">MySQL</span><span class="chip">NextAuth v5</span><span class="chip">Paynow</span><span class="chip">Agora RTC</span><span class="chip">face-api.js</span><span class="chip">Nodemailer</span><span class="chip">pdf-lib</span><span class="chip">QRCode</span><span class="chip">Docker</span><span class="chip">nginx</span>
+              </div>
+              <details class="tech">
+                <summary>Technical note</summary>
+                <div class="tech-body">
+                  <div><h4>Data model</h4><p>20+ Prisma models covering users, listings, rooms, bookings, conversations, messages, voice calls, concerts, tickets, payments, payment events, verification records, moderation and audit logs, with indexes chosen for the queries the UI actually runs.</p></div>
+                  <div><h4>Money handling</h4><p>Payments are written before the redirect, confirmed by webhook or polling, and every state change appends a PaymentEvent. Ticket issuance and booking confirmation happen only after a confirmed payment, so a refresh or a duplicate callback cannot double-sell.</p></div>
+                  <div><h4>Roles &amp; access</h4><p>SEEKER, OWNER and ADMIN scopes enforced on the server, not just hidden in the UI. Verification gates publishing; deactivation blocks access immediately; sessions are revoked by bumping a session epoch.</p></div>
+                  <div><h4>Operations</h4><p>Prisma migrations and idempotent seed data, a health endpoint that reports database and integration status, backup scripts, Docker images and an nginx reverse proxy in front of the app.</p></div>
+                </div>
+              </details>
+            </div>
+            <div class="project-metrics">
+              <div class="pm"><b>20+</b><small>data models</small></div>
+              <div class="pm"><b>4</b><small>payment rails</small></div>
+              <div class="pm"><b>3</b><small>user roles</small></div>
+              <div class="pm"><b>3</b><small>market verticals</small></div>
+            </div>
+          </div>
+          <aside class="project-facts" aria-label="Project facts">
+            <div class="pf"><span>Role</span><strong>Full-stack developer</strong></div>
+            <div class="pf"><span>Surfaces</span><strong>Public, owner, admin</strong></div>
+            <div class="pf"><span>Domain</span><strong>Marketplace, payments, escrow</strong></div>
+            <div class="pf"><span>Stack</span><strong>Next.js + Prisma + MySQL</strong></div>
+            <div class="pf"><span>Integrations</span><strong>Paynow, Agora, SMTP</strong></div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-index">03</div>
+          <div>
+            <p class="project-kicker">Co-developer, web &amp; mobile · May 2026 – present · BUSE</p>
+            <h3>Campus sport, from fixture list to <span>final whistle.</span></h3>
+            <p class="project-tagline">A web and mobile platform that digitises how campus sport is organised and followed.</p>
+          </div>
+          <a class="project-link" href="#experience">Context ↓</a>
+        </div>
+        <div class="project-grid">
+          <div class="project-main">
+            <div class="project-body">
+              <p>A self-funded innovation project built by a two-person team. The platform brings teams, fixtures, live match updates, standings, player statistics and “Play Now” pickup games into one place, instead of a patchwork of group chats and paper sheets.</p>
+              <ul class="checks">
+                <li><strong>Designed and built the interface</strong> — the initial web prototype in Next.js, React and Tailwind CSS, plus the Expo (React Native) mobile application shell.</li>
+                <li><strong>Ran the discovery</strong> — research, stakeholder consultations and interviews with players and organisers; turned what we heard into the first feature set.</li>
+                <li><strong>Led the communication</strong> — project presentations, stakeholder updates and representing the development team.</li>
+                <li><strong>Shipped v1.0.0</strong> in November 2026 after roughly 450 person-hours across the team, and co-authored the copyright and innovation disclosure for the University's Research and Innovation Directorate.</li>
+              </ul>
+              <div class="stack" aria-label="Technologies used">
+                <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Tailwind CSS</span><span class="chip">Expo</span><span class="chip">React Native</span><span class="chip">Node.js</span><span class="chip">Android fundamentals</span>
+              </div>
+            </div>
+            <div class="project-metrics">
+              <div class="pm"><b>v1.0.0</b><small>released Nov 2026</small></div>
+              <div class="pm"><b>450+</b><small>person-hours, team</small></div>
+              <div class="pm"><b>2</b><small>platforms: web + mobile</small></div>
+              <div class="pm"><b>2</b><small>person team</small></div>
+            </div>
+          </div>
+          <aside class="project-facts" aria-label="Project facts">
+            <div class="pf"><span>Role</span><strong>Co-developer &amp; stakeholder lead</strong></div>
+            <div class="pf"><span>Platforms</span><strong>Web + Android / iOS</strong></div>
+            <div class="pf"><span>Domain</span><strong>Sports management</strong></div>
+            <div class="pf"><span>Stage</span><strong>v1.0.0 complete</strong></div>
+            <div class="pf"><span>Team</span><strong>Two people</strong></div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label"><b>03</b> Capabilities</div>
+        <h2 class="h2 reveal">The toolkit behind <em>the work.</em></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <div class="sg-top"><h3>Languages</h3><span class="sg-num">01</span></div>
+          <p class="sg-note">The syntax I reach for, from typed front ends to scripts.</p>
+          <div class="stack"><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+        </div>
+        <div class="skill-group reveal d1">
+          <div class="sg-top"><h3>Frontend</h3><span class="sg-num">02</span></div>
+          <p class="sg-note">Interfaces that work on a phone at a kiosk and a desktop in HR.</p>
+          <div class="stack"><span class="chip">React 18 / 19</span><span class="chip">Next.js 16</span><span class="chip">App Router</span><span class="chip">Tailwind CSS</span><span class="chip">Vite</span><span class="chip">React Router</span><span class="chip">Expo</span><span class="chip">React Native</span><span class="chip">Responsive UI</span><span class="chip">Accessibility</span></div>
+        </div>
+        <div class="skill-group reveal d2">
+          <div class="sg-top"><h3>Backend &amp; APIs</h3><span class="sg-num">03</span></div>
+          <p class="sg-note">Server-side logic, auth, validation and jobs.</p>
+          <div class="stack"><span class="chip">Node.js</span><span class="chip">Express (MVC)</span><span class="chip">Route handlers</span><span class="chip">REST</span><span class="chip">JWT</span><span class="chip">NextAuth v5</span><span class="chip">bcrypt</span><span class="chip">Zod</span><span class="chip">node-cron</span><span class="chip">Nodemailer</span></div>
+        </div>
+        <div class="skill-group reveal d3">
+          <div class="sg-top"><h3>Data</h3><span class="sg-num">04</span></div>
+          <p class="sg-note">Schemas that reflect how the business actually works.</p>
+          <div class="stack"><span class="chip">MySQL</span><span class="chip">MariaDB</span><span class="chip">Prisma</span><span class="chip">Sequelize</span><span class="chip">Schema design</span><span class="chip">Migrations</span><span class="chip">Indexing</span><span class="chip">Seeding</span><span class="chip">Backups</span><span class="chip">SQLite</span></div>
+        </div>
+        <div class="skill-group reveal">
+          <div class="sg-top"><h3>AI &amp; computer vision</h3><span class="sg-num">05</span></div>
+          <p class="sg-note">Face recognition that has to work in a real doorway.</p>
+          <div class="stack"><span class="chip">face-api.js</span><span class="chip">128-d descriptors</span><span class="chip">1:N matching</span><span class="chip">Face enrolment</span><span class="chip">Liveness checks</span><span class="chip">Threshold tuning</span><span class="chip">Camera capture</span><span class="chip">AI-assisted development</span><span class="chip">Tool selection</span></div>
+        </div>
+        <div class="skill-group reveal d1">
+          <div class="sg-top"><h3>Payments &amp; integrations</h3><span class="sg-num">06</span></div>
+          <p class="sg-note">Money and third parties, handled carefully.</p>
+          <div class="stack"><span class="chip">Paynow</span><span class="chip">EcoCash</span><span class="chip">OneMoney</span><span class="chip">Card / bank</span><span class="chip">Webhooks</span><span class="chip">Escrow</span><span class="chip">Payouts</span><span class="chip">Agora RTC</span><span class="chip">PDF / QR</span></div>
+        </div>
+        <div class="skill-group reveal d2">
+          <div class="sg-top"><h3>DevOps &amp; delivery</h3><span class="sg-num">07</span></div>
+          <p class="sg-note">Getting it off localhost and keeping it alive.</p>
+          <div class="stack"><span class="chip">Git / GitHub</span><span class="chip">Docker</span><span class="chip">Compose</span><span class="chip">nginx</span><span class="chip">TLS</span><span class="chip">GitHub Actions</span><span class="chip">Health checks</span><span class="chip">Linux</span><span class="chip">Windows</span></div>
+        </div>
+        <div class="skill-group reveal d3">
+          <div class="sg-top"><h3>Security &amp; quality</h3><span class="sg-num">08</span></div>
+          <p class="sg-note">Tested, reviewed and hard to misuse.</p>
+          <div class="stack"><span class="chip">Jest</span><span class="chip">Supertest</span><span class="chip">Vitest</span><span class="chip">Testing Library</span><span class="chip">Playwright</span><span class="chip">RBAC</span><span class="chip">Audit logs</span><span class="chip">Rate limiting</span><span class="chip">OWASP basics</span><span class="chip">Ethical hacking</span><span class="chip">Security research</span></div>
+        </div>
+      </div>
+      <div class="beyond">
+        <div class="beyond-card reveal">
+          <h3>AI-augmented delivery</h3>
+          <p>I choose the right tool for the job — AI assistants for research, scaffolding, debugging, test generation and documentation — then review, test and secure the result. <strong>Faster delivery, fewer blind spots, and targets met without lowering the engineering bar.</strong></p>
+        </div>
+        <div class="beyond-card reveal d1">
+          <h3>Cybersecurity research</h3>
+          <p>Ethical hacking certified (15 hours) with hands-on security work across both platforms: authentication, RBAC, session revocation, rate limiting, audit trails, webhook verification and liveness checks. <strong>Open to cybersecurity research, vulnerability research and security-focused development.</strong></p>
+        </div>
+        <div class="beyond-card reveal">
+          <h3>Product &amp; documentation</h3>
+          <p>Requirements gathering, stakeholder interviews, SRS and UML, database design, test reports, security reviews, disaster-recovery plans, user manuals and software proposals. <strong>I can explain the system to the person paying for it.</strong></p>
+        </div>
+        <div class="beyond-card reveal d1">
+          <h3>Ways of working</h3>
+          <p>Small teams, clear ownership, frequent demos and written decisions. Comfortable presenting to stakeholders, working from a ticket, reviewing a pull request and asking the question that stops a bad assumption. <strong>On-demand and contract friendly. English and Shona.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label"><b>04</b> Experience</div>
+        <h2 class="h2 reveal">Where I've done the <em>work.</em></h2>
+      </div>
+      <div class="timeline-layout">
+        <div class="reveal">
+          <h3 class="col-title">Experience</h3>
+          <div class="timeline">
+            <div class="entry">
+              <p class="when">Nov 2026 – Present</p>
+              <h3>Independent Software Developer</h3>
+              <p class="org">Vitality Hospital · Biometric attendance &amp; management system</p>
+              <p>Turned a paper-and-PIN attendance process into a full product proposal and a working kiosk + dashboard. Designed the face-matching and liveness flow, the shift and payroll engine, the security model and the deployment, and wrote the SRS, UML, database, security, test and recovery documentation.</p>
+            </div>
+            <div class="entry">
+              <p class="when">May 2026 – Present</p>
+              <h3>Co-Developer, Web &amp; Mobile</h3>
+              <p class="org">BUSE Campus Sports Hub · Bindura University of Science Education</p>
+              <p>Two-person innovation project. Built the Next.js / React / Tailwind interface and the Expo app shell; ran stakeholder research and interviews; led presentations and co-authored the copyright and innovation disclosure. <strong>v1.0.0 shipped November 2026 (~450 team hours).</strong></p>
+            </div>
+            <div class="entry">
+              <p class="when">2026</p>
+              <h3>Systems Analyst, Project Manager &amp; Frontend Developer</h3>
+              <p class="org">CS218 Group Project · Biometric log system with payroll</p>
+              <p>Two-member academic project. Gathered and analysed requirements, planned and allocated the work, and built the frontend in HTML, CSS and JavaScript on a Node.js stack. The system authenticated staff by face using the device camera — the first version of the biometric work above.</p>
+            </div>
+            <div class="entry">
+              <p class="when">2026</p>
+              <h3>Group Presenter · SQLite in Android</h3>
+              <p class="org">CSH205 / SWE205 Mobile Application Development · Group 5</p>
+              <p>Co-authored and presented a technical deep-dive on SQLite, SQLiteOpenHelper, SQLiteDatabase, CRUD operations, cursors and local storage for an 11-member group. <strong>Databases, explained clearly.</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal d1">
+          <h3 class="col-title">Education &amp; certification</h3>
+          <div class="edu-card">
+            <p class="when">2024 – 2028 (expected)</p>
+            <h3>BSc (Honours) Computer Science</h3>
+            <p class="uni">Bindura University of Science Education</p>
+            <div class="edu-meta"><span>Level 2.2 · 2026</span><span>Attachment: Jan–Dec 2027</span><span>Reg. B250549A</span></div>
+            <div class="modules" aria-label="Key modules">
+              <span class="key">OOP I &amp; II</span><span class="key">Data Structures &amp; Algorithms</span><span class="key">Design &amp; Analysis of Algorithms</span><span class="key">Database Concepts</span><span class="key">Data Communications &amp; Networking</span><span class="key">Operating Systems</span><span class="key">Software Engineering</span><span class="key">System Analysis &amp; Design</span><span class="key">Software Project Management</span><span class="key">Mobile Application Development</span><span class="key">Internet &amp; Web Design</span><span>Computer Architecture</span><span>Discrete Mathematics</span><span>Applied Statistics</span><span>Research Methodology</span><span>Ethics &amp; Professionalism</span>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div>
+              <h3>Learn Ethical Hacking From Scratch</h3>
+              <p class="meta">Udemy · completed May 2026 · 15 total hours<br>Zaid Sabih, z Security · Cert. UC-83375f8c-8291-4785-bc2c-3ecc9509b191</p>
+              <a href="https://ude.my/UC-83375f8c-8291-4785-bc2c-3ecc9509b191" target="_blank" rel="noopener">Verify certificate ↗</a>
+            </div>
+            <div class="badge" aria-hidden="true">15h<br>CERT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DOCUMENTS ================= -->
+  <section class="section" id="documents">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label"><b>05</b> Documents</div>
+        <h2 class="h2 reveal">Receipts, not <em>adjectives.</em></h2>
+      </div>
+      <div class="docs-grid">
+        <a class="doc reveal" href="assets/Promise_Chirove_CV_2027.pdf" target="_blank" rel="noopener">
+          <div class="doc-media pdf"><span class="pdf-mark">PDF · CV</span></div>
+          <div class="doc-body">
+            <p class="dtype">Curriculum vitae</p>
+            <h3>Promise Chirove — CV</h3>
+            <p>The two-page overview: education, experience, skills and certification.</p>
+            <span class="open">Open PDF <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+        <a class="doc reveal d1" href="assets/buse-reference-letter.jpg" data-lightbox data-caption="University attachment request letter — BUSE, 17 November 2026">
+          <div class="doc-media"><img src="assets/buse-reference-letter.jpg" alt="Bindura University of Science Education industrial attachment request letter for Promise Chirove" loading="lazy" width="1792" height="2560"></div>
+          <div class="doc-body">
+            <p class="dtype">University letter</p>
+            <h3>Attachment request</h3>
+            <p>Confirms the 12-month attachment, January to December 2027.</p>
+            <span class="open">View letter <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+        <a class="doc reveal d2" href="assets/udemy-ethical-hacking-certificate.jpg" data-lightbox data-caption="Udemy certificate — Learn Ethical Hacking From Scratch, May 2026">
+          <div class="doc-media"><img src="assets/udemy-ethical-hacking-certificate.jpg" alt="Udemy certificate of completion for Learn Ethical Hacking From Scratch, awarded to Promise Chirove" loading="lazy" width="1600" height="1131"></div>
+          <div class="doc-body">
+            <p class="dtype">Certification</p>
+            <h3>Ethical hacking · 15h</h3>
+            <p>Udemy certificate of completion, May 2026, with a verifiable certificate number.</p>
+            <span class="open">View certificate <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+        <a class="doc reveal d3" href="assets/Vitality-Biometric-Attendance-Proposal.pdf" target="_blank" rel="noopener">
+          <div class="doc-media pdf"><span class="pdf-mark">PDF · PROPOSAL</span></div>
+          <div class="doc-body">
+            <p class="dtype">Software proposal</p>
+            <h3>Vitality Hospital proposal</h3>
+            <p>A 13-page product proposal covering the kiosk, dashboard, payroll, security and rollout.</p>
+            <span class="open">Open PDF <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+      </div>
+      <p class="doc-note reveal"><strong>Also available on request:</strong> university-issued academic and project reference letters, project documentation (SRS, UML, database design, test report, security review, disaster-recovery plan) and the CS218 project reference letter.</p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-label"><b>06</b> Contact</div>
+        <h2 class="h2 reveal">Let's build something that <em>works.</em></h2>
+      </div>
+      <div class="contact-top">
+        <div class="reveal">
+          <p class="contact-sub">I'm ready for a 2027 attachment, a paid on-demand build, or a cybersecurity research collaboration. If you have a role, a project or a question, my inbox is open. I reply quickly.</p>
+          <div class="contact-actions">
+            <a class="btn btn-acid" href="mailto:p.chirove99@gmail.com?subject=Work%20with%20Promise%20Chirove">Email me <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://wa.me/263788249959" target="_blank" rel="noopener">WhatsApp <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="tel:+263788393100">Call <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="availability">
+            <span class="dot" aria-hidden="true"></span>
+            <p><strong>Available January – December 2027</strong> for the university attachment — and open to paid, on-demand software or cybersecurity research work. I scope deliverables and rates up front, then deliver against the deadline.</p>
+          </div>
+        </div>
+        <div class="reveal d1">
+          <div class="contact-list">
+            <div class="contact-row">
+              <div><div class="cr-label">Email</div><div class="cr-value">p.chirove99@gmail.com</div></div>
+              <button class="copy-btn" type="button" data-copy="p.chirove99@gmail.com" aria-label="Copy email address">Copy</button>
+            </div>
+            <a class="contact-row" href="tel:+263788393100">
+              <div><div class="cr-label">Phone</div><div class="cr-value">0788 393 100</div></div>
+              <span class="cr-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-row" href="https://wa.me/263788249959" target="_blank" rel="noopener">
+              <div><div class="cr-label">WhatsApp</div><div class="cr-value">0788 249 959</div></div>
+              <span class="cr-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="contact-row">
+              <div><div class="cr-label">Availability</div><div class="cr-value">Attachment Jan–Dec 2027 · on-demand / contract</div></div>
+            </div>
+            <div class="contact-row">
+              <div><div class="cr-label">Engagements</div><div class="cr-value">Software builds · cybersecurity research · on-demand</div></div>
+            </div>
+            <div class="contact-row">
+              <div><div class="cr-label">Commercial</div><div class="cr-value">Scoped per project or retainer · rates on request</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© <span id="year">2026</span> Promise Chirove · Designed and built by hand<br>HTML, CSS and JavaScript. No template.</p>
+    <a class="up" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Document preview">
+  <button class="lb-close" id="lbClose" aria-label="Close preview">✕</button>
+  <img id="lbImg" src="" alt="">
+  <p class="lb-caption" id="lbCaption"></p>
+</div>
+
+<script>
+  (function () {
+    "use strict";
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Header + progress
+    var header = document.getElementById("siteHeader");
+    var progress = document.getElementById("progress");
+    function onScroll() {
+      var y = window.scrollY || document.documentElement.scrollTop;
+      header.classList.toggle("scrolled", y > 24);
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + "%";
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    var menuBtn = document.getElementById("menuBtn");
+    var mobileMenu = document.getElementById("mobileMenu");
+    function setMenu(open) {
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      mobileMenu.classList.toggle("open", open);
+      mobileMenu.setAttribute("aria-hidden", String(!open));
+      mobileMenu.inert = !open;
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+    menuBtn.addEventListener("click", function () {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
+    });
+    mobileMenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setMenu(false);
+    });
+
+    // Reveal on scroll
+    var revealEls = document.querySelectorAll(".reveal");
+    if (!reduce && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add("in"); });
+    }
+
+    // Active nav
+    var sections = document.querySelectorAll("main section[id]");
+    var navLinks = document.querySelectorAll(".nav-desktop a");
+    if ("IntersectionObserver" in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(function (link) {
+            link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+          });
+        });
+      }, { rootMargin: "-42% 0px -50% 0px" });
+      sections.forEach(function (s) { spy.observe(s); });
+    }
+
+    // Copy email
+    document.querySelectorAll("[data-copy]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy");
+        var done = function () {
+          var old = btn.textContent;
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = old; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(done);
+        } else {
+          done();
+        }
+      });
+    });
+
+    // Lightbox
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lbImg");
+    var lbCaption = document.getElementById("lbCaption");
+    var lastFocus = null;
+    function openLightbox(link) {
+      lastFocus = link;
+      var img = link.querySelector("img");
+      lbImg.src = link.getAttribute("href");
+      lbImg.alt = img ? img.alt : "";
+      lbCaption.textContent = link.getAttribute("data-caption") || "";
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+      document.getElementById("lbClose").focus();
+    }
+    function closeLightbox() {
+      lb.classList.remove("open");
+      document.body.style.overflow = "";
+      lbImg.src = "";
+      if (lastFocus) lastFocus.focus();
+    }
+    document.querySelectorAll("[data-lightbox]").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        openLightbox(link);
+      });
+    });
+    document.getElementById("lbClose").addEventListener("click", closeLightbox);
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) closeLightbox();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lb.classList.contains("open")) closeLightbox();
+    });
+  })();
+</script>
+</body>
+</html>

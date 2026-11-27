@@ -1,1 +1,335 @@
- 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Promise Chirove - Curriculum Vitae</title>
+<meta name="author" content="Promise Chirove">
+<meta name="description" content="Print-ready CV for Promise Chirove, Computer Science undergraduate seeking a 2027 industrial attachment.">
+<link rel="icon" href="favicon.ico">
+<style>
+  :root{
+    --ink:#171a17;
+    --muted:#5d635c;
+    --faint:#8a9088;
+    --line:#d9ddd6;
+    --green:#17402f;
+    --green-2:#2d6a4f;
+    --wash:#f3f5f0;
+    --sans:"Segoe UI", Arial, Helvetica, sans-serif;
+    --serif:Georgia, "Times New Roman", serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; padding:0}
+  body{background:#e7e8e2; color:var(--ink); font-family:var(--sans); font-size:9.2pt; line-height:1.47; -webkit-font-smoothing:antialiased}
+  a{color:inherit; text-decoration:none}
+  ul{margin:0; padding:0; list-style:none}
+  h1,h2,h3,h4,p{margin:0}
+  .toolbar{
+    position:fixed; top:16px; right:16px; z-index:20; display:flex; gap:8px;
+  }
+  .toolbar a,.toolbar button{
+    font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.03em;
+    padding:10px 16px; border:1px solid #b9beb5; background:#fff; color:#171a17; cursor:pointer;
+    text-decoration:none; border-radius:2px;
+  }
+  .toolbar button{background:var(--green); border-color:var(--green); color:#fff}
+  .toolbar a:hover{border-color:var(--green); color:var(--green)}
+  .toolbar button:hover{background:#215740}
+
+  .page{
+    width:210mm; min-height:297mm; background:#fff; margin:22px auto; padding:12mm 14mm 11mm;
+    box-shadow:0 10px 34px rgba(20,30,20,.14); position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .page::before{content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--green) 0 34%, var(--green-2) 34% 48%, #d8e3d8 48% 100%)}
+
+  /* ---------- header ---------- */
+  .cv-header{display:grid; grid-template-columns:1fr 28mm; gap:9mm; align-items:start; padding-bottom:3.4mm; border-bottom:1px solid var(--line)}
+  .kicker{font-size:7.4pt; letter-spacing:.09em; text-transform:uppercase; color:var(--green-2); font-weight:700; margin-bottom:2.4mm}
+  .cv-header h1{font-family:var(--serif); font-weight:400; font-size:31pt; line-height:.96; letter-spacing:-.015em; color:var(--ink)}
+  .role{font-size:10.4pt; color:var(--muted); margin-top:2mm; letter-spacing:.01em}
+  .contact{display:flex; flex-wrap:wrap; gap:.7mm 3.4mm; margin-top:3mm; font-size:8.5pt; color:var(--ink)}
+  .contact span{display:inline-flex; align-items:center; gap:1.6mm}
+  .contact span + span::before{content:""; width:2.6px; height:2.6px; border-radius:50%; background:var(--green-2); flex:none}
+  .photo{width:28mm; height:34mm; object-fit:cover; object-position:center 16%; border:1px solid #b9c2b7; filter:saturate(.85) contrast(1.02)}
+
+  /* ---------- sections ---------- */
+  .sec{margin-top:3.8mm}
+  .sec-head{display:flex; align-items:center; gap:3mm; margin-bottom:2.4mm}
+  .sec-head h2{font-size:7.6pt; letter-spacing:.05em; text-transform:uppercase; color:var(--green); font-weight:700; white-space:nowrap}
+  .sec-head::after{content:""; flex:1; height:1px; background:var(--line)}
+  .summary{font-size:9.2pt; line-height:1.5; color:#333833; text-align:justify}
+  .summary strong{color:var(--ink); font-weight:600}
+
+  .facts{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5mm; margin-top:2.8mm}
+  .fact{background:var(--wash); border-left:2px solid var(--green-2); padding:1.8mm 2.6mm}
+  .fact b{display:block; font-family:var(--serif); font-size:11.5pt; line-height:1; color:var(--green); font-weight:400}
+  .fact span{display:block; font-size:6.8pt; text-transform:uppercase; letter-spacing:.02em; color:var(--muted); margin-top:.6mm; line-height:1.3}
+  .contact-facts{margin-top:0; grid-template-columns:repeat(4,1fr)}
+
+  .skills{display:grid; grid-template-columns:1fr 1fr; gap:1.8mm 7mm}
+  .skill{display:grid; grid-template-columns:27mm 1fr; gap:3mm; padding-bottom:1.3mm; border-bottom:1px solid #eceee9}
+  .skill h3{font-size:7.6pt; letter-spacing:.06em; text-transform:uppercase; color:var(--green); font-weight:700; padding-top:.2mm}
+  .skill p{font-size:8pt; color:#3d423c; line-height:1.4}
+
+  .job{padding-bottom:2.5mm; margin-bottom:2.5mm; border-bottom:1px solid #eceee9}
+  .job:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+  .job-top{display:flex; justify-content:space-between; align-items:baseline; gap:4mm}
+  .job h3{font-size:10.1pt; font-weight:700; letter-spacing:-.005em}
+  .job .when{font-size:7.5pt; color:var(--green-2); font-weight:700; letter-spacing:.02em; white-space:nowrap; text-transform:uppercase}
+  .job .org{font-size:8.3pt; color:var(--muted); font-style:italic; margin-top:.3mm}
+  .job ul{margin-top:1.3mm}
+  .job li{position:relative; padding-left:3.4mm; font-size:8.6pt; line-height:1.42; color:#333833; margin-bottom:.6mm}
+  .job li::before{content:""; position:absolute; left:0; top:1.55mm; width:1.3mm; height:1.3mm; background:var(--green-2)}
+  .job li strong{color:var(--ink); font-weight:600}
+
+  .project{padding:2.6mm 3mm; border:1px solid var(--line); background:#fbfcf9; margin-bottom:2.4mm}
+  .project:last-child{margin-bottom:0}
+  .project-top{display:flex; justify-content:space-between; gap:3mm; align-items:baseline}
+  .project h3{font-size:9.4pt; font-weight:700}
+  .project .tag{font-size:7.2pt; text-transform:uppercase; letter-spacing:.03em; color:var(--green-2); font-weight:700; white-space:nowrap}
+  .project .stack{font-size:7.6pt; color:var(--faint); margin-top:.7mm}
+  .project p{font-size:8.3pt; line-height:1.48; color:#3a3f39; margin-top:1mm}
+  .project p strong{color:var(--ink); font-weight:600}
+
+  .edu{display:grid; grid-template-columns:1fr 64mm; gap:7mm; align-items:start}
+  .edu h3{font-family:var(--serif); font-size:14pt; font-weight:400; line-height:1.12; color:var(--ink)}
+  .edu .uni{font-size:8.6pt; color:var(--muted); margin-top:.7mm}
+  .edu .meta{font-size:7.8pt; color:var(--green-2); font-weight:600; margin-top:1.2mm; letter-spacing:.03em}
+  .modules{font-size:7.7pt; color:#4a4f48; line-height:1.55; margin-top:1.6mm}
+  .modules b{color:var(--ink); font-weight:600}
+
+  .cert{border:1px solid var(--line); border-top:2px solid var(--green); padding:3mm 3.2mm; background:var(--wash)}
+  .cert .label{font-size:6.8pt; text-transform:uppercase; letter-spacing:.05em; color:var(--green-2); font-weight:700}
+  .cert h3{font-size:9.4pt; font-weight:700; margin-top:1mm; line-height:1.35}
+  .cert p{font-size:7.6pt; color:var(--muted); line-height:1.5; margin-top:1mm}
+  .cert .num{font-size:6.8pt; color:var(--faint); word-break:break-all; margin-top:1mm}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:7mm}
+  .doc-list li{font-size:8.3pt; color:#3a3f39; padding:1.5mm 0; border-bottom:1px solid #eceee9; display:flex; justify-content:space-between; gap:3mm}
+  .doc-list li span{color:var(--faint); font-size:7.3pt; white-space:nowrap}
+  .note{font-size:8pt; color:var(--muted); line-height:1.55; margin-top:2mm}
+  .note strong{color:var(--ink); font-weight:600}
+
+  .fit{margin-top:auto; padding-top:2mm; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:4mm; font-size:7.4pt; color:var(--faint)}
+  .fit strong{color:var(--green); font-weight:600}
+  .page-num{font-family:var(--serif); font-size:9pt; color:var(--green)}
+
+  .qr-wrap{display:flex; justify-content:flex-end; align-items:flex-start; min-height:19mm}
+  .qr-box{text-align:center}
+  .qr-box img{width:17mm; height:17mm; display:block; background:#fff; padding:.8mm; border:1px solid var(--line)}
+  .qr-box span{display:block; font-size:6pt; letter-spacing:.1em; color:var(--green-2); font-weight:700; margin-top:.8mm}
+
+  @page{size:A4; margin:0}
+  @media print{
+    body{background:#fff; font-size:9.6pt; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .toolbar{display:none !important}
+    .page{margin:0; box-shadow:none; width:210mm; height:297mm; min-height:297mm; page-break-after:always; padding:12mm 14mm 10mm}
+    .page:last-child{page-break-after:auto}
+    a{color:inherit}
+  }
+  @media screen and (max-width:900px){
+    body{padding:0 8px}
+    .page{width:100%; min-height:0; padding:24px 20px; margin:14px auto}
+    .cv-header{grid-template-columns:1fr 24mm}
+    .skills,.two-col{grid-template-columns:1fr}
+    .edu{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr}
+    .contact-facts{grid-template-columns:1fr 1fr}
+    .toolbar{position:static; justify-content:flex-end; padding:12px 4px 0; background:transparent}
+  }
+  @media screen and (max-width:560px){
+    .contact-facts{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">← Landing page</a>
+  <a href="assets/Promise_Chirove_CV_2027.pdf" download>Download PDF</a>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<!-- ========================= PAGE 1 ========================= -->
+<section class="page" aria-label="Page 1">
+  <header class="cv-header">
+    <div>
+      <p class="kicker">Curriculum Vitae | 2027 Industrial Attachment</p>
+      <h1>Promise Chirove</h1>
+      <p class="role">Computer Science Undergraduate | Full-Stack Developer</p>
+      <div class="contact">
+        <span>0788 393 100</span>
+        <span>0788 249 959</span>
+        <span>p.chirove99@gmail.com</span>
+        <span>Reg. B250549A</span>
+      </div>
+    </div>
+    <img class="photo" src="assets/promise-chirove-portrait.jpg" alt="Promise Chirove">
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Profile</h2></div>
+    <p class="summary">Computer Science undergraduate at Bindura University of Science Education (Level 2.2), seeking a <strong>12-month industrial attachment from January 2027</strong> and open to <strong>on-demand software or cybersecurity research work</strong>. I build full-stack systems end to end - React and Next.js interfaces, Node and Express APIs, relational data, payments and computer vision - with a bias for security, automated tests and documentation. I work <strong>AI-augmented</strong>: the right tool for each job, with every output reviewed and tested, to save time and meet delivery targets. Recent work: face-recognition attendance and payroll for Vitality Hospital, a payments-backed housing marketplace, and a campus sports platform.</p>
+    <div class="facts">
+      <div class="fact"><b>03</b><span>Full-stack systems built end to end</span></div>
+      <div class="fact"><b>334</b><span>Automated tests in the biometric platform</span></div>
+      <div class="fact"><b>15h</b><span>Certified ethical hacking training</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Core skills</h2></div>
+    <div class="skills">
+      <div class="skill"><h3>Languages</h3><p>JavaScript, TypeScript, Java, Python, C++, SQL, HTML, CSS</p></div>
+      <div class="skill"><h3>Frontend</h3><p>React 18/19, Next.js 16 (App Router), Tailwind CSS, Vite, React Router, Expo, React Native, responsive and accessible UI</p></div>
+      <div class="skill"><h3>Backend</h3><p>Node.js, Express (MVC), REST APIs, JWT, NextAuth v5, bcrypt, Zod validation, node-cron, Nodemailer</p></div>
+      <div class="skill"><h3>Data</h3><p>MySQL, MariaDB, Prisma, Sequelize, schema design, migrations, indexing, seeding, backups, SQLite</p></div>
+      <div class="skill"><h3>AI &amp; vision</h3><p>face-api.js, 128-d descriptors, 1:N matching, liveness challenges; AI-assisted research, scaffolding, debugging and test generation</p></div>
+      <div class="skill"><h3>Payments</h3><p>Paynow, EcoCash, OneMoney, card and bank rails, webhooks, payment state machines, escrow, payouts</p></div>
+      <div class="skill"><h3>DevOps</h3><p>Git/GitHub, Docker, Docker Compose, nginx, TLS, GitHub Actions CI/CD, health checks, Linux and Windows</p></div>
+      <div class="skill"><h3>Quality &amp; security</h3><p>Jest, Supertest, Vitest, Playwright, RBAC, audit logs, rate limiting, OWASP, ethical hacking, security research</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Experience</h2></div>
+
+    <article class="job">
+      <div class="job-top">
+        <h3>Independent Software Developer</h3>
+        <span class="when">Nov 2026 - Present</span>
+      </div>
+      <p class="org">Vitality Hospital | Biometric Employee Attendance &amp; Management System</p>
+      <ul>
+        <li>Designed and built a browser attendance kiosk and HR dashboard: <strong>server-side 1:N face matching</strong>, signed single-use liveness challenges, auto and manual punch modes, and provisioned device authentication.</li>
+        <li>Built the shift and payroll engine: shift categories and individual overrides, overnight windows, Africa/Harare time-zone maths, grace periods, auto-logout cron, reports and CSV/API payroll exports.</li>
+        <li>Delivered with <strong>252 backend and 82 frontend tests</strong>, Playwright browser tests, Docker Compose, nginx with TLS and GitHub Actions CI; added role-based access, rate limiting and audit logging.</li>
+        <li>Authored the SRS, UML, database design, security review, test report and disaster-recovery plan, plus the client-facing software proposal.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-top">
+        <h3>Co-Developer, Web &amp; Mobile</h3>
+        <span class="when">May 2026 - Present</span>
+      </div>
+      <p class="org">BUSE Campus Sports Hub | Bindura University of Science Education | Two-person team</p>
+      <ul>
+        <li>Co-built a full-stack web and mobile platform for teams, fixtures, live match updates, standings, player statistics and "Play Now" pickup games.</li>
+        <li>Built the initial Next.js, React and Tailwind CSS interface and the Expo (React Native) mobile application shell.</li>
+        <li>Led stakeholder research, consultations and presentations; co-authored the copyright disclosure. <strong>v1.0.0 released November 2026 (~450 team hours).</strong></li>
+      </ul>
+    </article>
+  </section>
+
+  <footer class="fit">
+    <span><strong>Available January - December 2027</strong> | Open to on-demand and contract work</span>
+    <span class="page-num">01 / 02</span>
+  </footer>
+</section>
+
+<!-- ========================= PAGE 2 ========================= -->
+<section class="page" aria-label="Page 2">
+  <header class="cv-header" style="padding-bottom:3mm">
+    <div>
+      <p class="kicker">Promise Chirove | Curriculum Vitae</p>
+      <h1 style="font-size:22pt">Selected projects &amp; education</h1>
+      <p class="role">Full-stack delivery | payments | biometrics | product documentation</p>
+    </div>
+    <div class="qr-wrap">
+      <div class="qr-box" id="qrBox" hidden>
+        <img id="qrImg" src="assets/qr-portfolio.png" alt="QR code to the online portfolio" onload="if(this.naturalWidth>10){this.parentElement.hidden=false;document.getElementById('qrFallback').hidden=true}else{this.parentElement.hidden=true}" onerror="this.parentElement.hidden=true">
+        <span>PORTFOLIO</span>
+      </div>
+      <div id="qrFallback" style="text-align:right; font-size:7.6pt; color:var(--green-2); font-weight:700; letter-spacing:.08em; line-height:1.9">
+        PORTFOLIO<br>2026
+      </div>
+    </div>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Selected project</h2></div>
+    <article class="project">
+      <div class="project-top">
+        <h3>Dzimba Bindura - Housing, Stays &amp; Events Marketplace</h3>
+        <span class="tag">Full-stack developer | 2026</span>
+      </div>
+      <p class="stack">Next.js 16 | React 19 | TypeScript | Tailwind CSS 4 | Prisma 6 | MySQL | NextAuth v5 | Paynow | Agora RTC | Docker / nginx</p>
+      <p>A multi-role marketplace for Bindura rentals, short stays and concert tickets. Seekers search and book; owners manage listings, rooms and availability; admins verify identities, moderate content, release escrow payouts and check tickets at the gate. <strong>20+ Prisma models, three user roles, four payment rails.</strong></p>
+      <ul class="job" style="border:0; padding:0; margin:1.4mm 0 0">
+        <li style="font-size:8.4pt">Integrated <strong>Paynow</strong> (EcoCash, OneMoney, card and bank) with verified webhooks, a payment event log, retry-safe status polling and a payment state machine.</li>
+        <li style="font-size:8.4pt">Built a <strong>first-month rent escrow and payout workflow</strong>, booking lifecycle, in-app messaging, Agora voice calls, QR-coded PDF tickets and gate check-in.</li>
+        <li style="font-size:8.4pt">Implemented OTP second-factor sign-in, password resets, session revocation, ID/selfie verification with face-match scoring, moderation notices and a tamper-evident audit log.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Additional projects</h2></div>
+    <article class="project">
+      <div class="project-top">
+        <h3>SQLite in Android - Technical Presentation</h3>
+        <span class="tag">Group 5 | CSH205 / SWE205 | 2026</span>
+      </div>
+      <p class="stack">SQLite | SQLiteOpenHelper | SQLiteDatabase | ContentValues | Cursor | Android</p>
+      <p>Co-authored and presented a technical deep-dive on Android's embedded SQLite database: schema creation and versioning, CRUD operations, cursor handling and the lifecycle of a local database. Delivered to an 11-member group in the Mobile Application Development module.</p>
+    </article>
+    <p class="note" style="margin-top:2.6mm; padding-top:2mm; border-top:1px solid var(--line)">
+      <strong>CS218 | Biometric log system with payroll (2026)</strong> - two-member project; gathered and analysed requirements, planned delivery and built the HTML, CSS and JavaScript frontend on Node.js. Staff authenticated by face using the device camera - the precursor to the Vitality Hospital system.
+    </p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Education</h2></div>
+    <div class="edu">
+      <div>
+        <h3>BSc (Honours) Computer Science</h3>
+        <p class="uni">Bindura University of Science Education</p>
+        <p class="meta">Level 2.2 (2026) | Expected completion end of 2028 | Attachment January - December 2027</p>
+        <p class="modules"><b>Key modules:</b> Object-Oriented Programming I &amp; II; Data Structures and Algorithms; Design and Analysis of Algorithms; Database Concepts; Data Communications and Networking; Operating System Concepts; Software Engineering; System Analysis and Design; Software Project Management; Mobile Application Development; Internet and Web Designing; Computer Architecture; Discrete Mathematics; Applied Statistics. <b>Also:</b> Research Methodology; Ethics and Professionalism; Communication Skills; Entrepreneurship.</p>
+      </div>
+      <div class="cert">
+        <p class="label">Certification</p>
+        <h3>Learn Ethical Hacking From Scratch</h3>
+        <p>Udemy | completed May 2026 | 15 total hours<br>Instructors: Zaid Sabih, z Security</p>
+        <p class="num">Cert. UC-83375f8c-8291-4785-bc2c-3ecc9509b191<br>Verify: ude.my/UC-83375f8c-8291-4785-bc2c-3ecc9509b191</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Documents &amp; references</h2></div>
+    <div class="two-col">
+      <ul class="doc-list">
+        <li>Curriculum vitae (PDF) <span>Available</span></li>
+        <li>University attachment request letter <span>Available</span></li>
+        <li>Udemy ethical hacking certificate <span>Available</span></li>
+        <li>Vitality Hospital software proposal <span>Available</span></li>
+      </ul>
+      <div>
+        <p class="note"><strong>References available on request</strong>, including university-issued academic and project reference letters.</p>
+        <p class="note"><strong>Project documentation available:</strong> SRS, UML diagrams, database design, architecture, security review, test report, disaster-recovery plan and user manual for the biometric attendance system.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Contact</h2></div>
+    <div class="facts contact-facts">
+      <div class="fact"><b style="font-family:var(--sans); font-size:8.4pt; font-weight:600">Email</b><span style="text-transform:none; letter-spacing:0; font-size:8.2pt; color:var(--ink)">p.chirove99@gmail.com</span></div>
+      <div class="fact"><b style="font-family:var(--sans); font-size:8.4pt; font-weight:600">Phone</b><span style="text-transform:none; letter-spacing:0; font-size:8.2pt; color:var(--ink)">0788 393 100</span></div>
+      <div class="fact"><b style="font-family:var(--sans); font-size:8.4pt; font-weight:600">WhatsApp</b><span style="text-transform:none; letter-spacing:0; font-size:8.2pt; color:var(--ink)">0788 249 959</span></div>
+      <div class="fact"><b style="font-family:var(--sans); font-size:8.4pt; font-weight:600">Open to</b><span style="text-transform:none; letter-spacing:0; font-size:8.2pt; color:var(--ink)">Software · security research</span></div>
+    </div>
+  </section>
+
+  <footer class="fit">
+    <span><strong>Portfolio:</strong> <a id="portfolio-link" href="https://chirovep.github.io/">https://chirovep.github.io/</a> | <strong>Availability:</strong> January - December 2027 | On-demand / contract</span>
+    <span class="page-num">02 / 02</span>
+  </footer>
+</section>
+
+</body>
+</html>
